@@ -1,6 +1,5 @@
 package workshop.oo.roulette;
 
-import org.junit.Assert;
 import org.junit.Test;
 
 public class BetTest {
@@ -131,29 +130,11 @@ public class BetTest {
     assertAmount(roulette, iter, Bet.black(1), -20);
   }
 
-  private void assertWins(Roulette roulette, int iter, Bet bet, int expectedWins) {
-    int actualWins = 0;
-    while (iter > 0) {
-      if (roulette.spin(bet)){
-        actualWins++;
-      }
-      iter--;
-    }
-
-    Assert.assertEquals("Got: " + actualWins, expectedWins, actualWins);
+  private static void assertWins(Roulette roulette, int iter, Bet bet, int expectedWins) {
+    RouletteAsserts.assertWins(roulette, iter, new Bet[]{bet}, expectedWins);
   }
 
-  private void assertAmount(Roulette roulette, int iter, Bet bet, double expectedAmount) {
-    double actualAmount = 0.0;
-    while (iter > 0) {
-      if (roulette.spin(bet)) {
-        actualAmount += bet.getWinAmount();
-      } else {
-        actualAmount -= bet.getLoseAmount();
-      }
-      iter --;
-    }
-    Assert.assertEquals("Got: " + actualAmount, expectedAmount, actualAmount, .99);
+  private static void assertAmount(Roulette roulette, int iter, Bet bet, double expectedAmt) {
+    RouletteAsserts.assertAmount(roulette, iter, new Bet[] { bet }, expectedAmt);
   }
-
 }

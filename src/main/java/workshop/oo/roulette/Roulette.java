@@ -6,7 +6,7 @@ import java.util.Random;
 import java.util.Set;
 
 public interface Roulette {
-  boolean spin(Bet bet);
+  boolean[] spin(Bet[] bets);
 
   static Roulette american() {
     return new AmericanRoulette();
@@ -52,7 +52,7 @@ public interface Roulette {
     Set<Integer> usedIndexes = new HashSet<>();
 
     @Override
-    public boolean spin(Bet bet) {
+    public boolean[] spin(Bet[] bets) {
       if (usedIndexes.size() == 38) {
         usedIndexes.clear();
       }
@@ -64,7 +64,18 @@ public interface Roulette {
       usedIndexes.add(index);
       int winner = wheel[index];
 
-      return bet.check(index, winner);
+      return checkBets(bets, index, winner);
+    }
+
+    private boolean[] checkBets(Bet[] bets, int winIndex, int winner) {
+      int index = 0;
+      boolean[] results = new boolean[bets.length];
+
+      for (Bet bet : bets) {
+        results[index] = bet.check(winIndex, winner);
+        index ++;
+      }
+      return results;
     }
   }
 

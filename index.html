@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Incremental Design Presentation</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+  <style type="text/css">
+    @import url(https://fonts.googleapis.com/css?family=Yanone+Kaffeesatz);
+    @import url(https://fonts.googleapis.com/css?family=Droid+Serif:400,700,400italic);
+    @import url(https://fonts.googleapis.com/css?family=Ubuntu+Mono:400,700,400italic);
+
+    body { font-family: 'Droid Serif'; }
+    h1, h2, h3 {
+      font-family: 'Yanone Kaffeesatz';
+      font-weight: normal;
+    }
+    .remark-code, .remark-inline-code { font-family: 'Ubuntu Mono'; }
+  </style>
+</head>
+<body>
+<textarea id="source">
+
+class: center, middle
+
+
+# Incremental Design
+
+---
+
+# Software Development Challenges
+
+- Software is developed in increments
+- Adding incremental change requires refactoring existing code.
+- Refactoring gets harder and risky as the code gets bloated.
+- After several iterations, we tend to document the limitations and learn to live with the pain instead of fixing it.
+
+---
+
+# What if we incorporate Refactoring as a design technique?
+
+---
+
+# Incremental Design
+- Use tests as feedback mechanism for design
+- Refactor the code to address the complexity in consumer logic (Keep the test code simple and no Mockito :) )
+- Single Responsibility Principle.
+- Good design is as little design as possible.
+
+---
+
+# American Roulette
+- Wheel consist of numbers from 0 to 36.
+- Dealer spins a ball on outer rim of the wheel after which it will eventually fall into one of the numbered spaces.
+- The objective of the player is to guess what number the ball will land in.
+- Before each spin, players can bet on individual numbers or any combination of numbers.
+- Once the ball falls into a pocket and rests the dealer will call out winning number.
+- Types of bets: straight, split, street, square, basket, double street, Columns, Dozens, Lows/Highs, Evens/Odds, Reds/Blacks, ..
+- Payouts 35:1, 17:1, 11:1, 8:1, 6:1, 5:1, 2:1, 2:1, 1:1, 1:1, 1:1 res..,
+
+---
+# Lets Code
+
+---
+# Summary
+- Complexity of design increases exponentially with upfront design.
+- It’s linear in Incremental design - very few alternatives to consider and design principles help with choosing right from wrong.
+- More smaller refactoring in incremental design.
+- Tests verify both design and implementation in Incremental design.
+
+    </textarea>
+<script src="https://remarkjs.com/downloads/remark-latest.min.js" type="text/javascript">
+</script>
+<script type="text/javascript">
+  var slideshow = remark.create();
+</script>
+</body>
+</html>

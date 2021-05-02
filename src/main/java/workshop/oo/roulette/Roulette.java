@@ -4,9 +4,10 @@ import java.util.Arrays;
 import java.util.HashSet;
 import java.util.Random;
 import java.util.Set;
+import java.util.stream.Stream;
 
 public interface Roulette {
-  boolean[] spin(Bet[] bets);
+  void spin(Bet[] bets, Result result);
 
   static Roulette american() {
     return new AmericanRoulette();
@@ -48,11 +49,11 @@ public interface Roulette {
       return Arrays.toString(wheel);
     }
 
-    private Random rnd = new Random();
+    private final Random rnd = new Random();
     Set<Integer> usedIndexes = new HashSet<>();
 
     @Override
-    public boolean[] spin(Bet[] bets) {
+    public void spin(Bet[] bets, Result result) {
       if (usedIndexes.size() == 38) {
         usedIndexes.clear();
       }
@@ -64,18 +65,11 @@ public interface Roulette {
       usedIndexes.add(index);
       int winner = wheel[index];
 
-      return checkBets(bets, index, winner);
+      checkBets(bets, result, index, winner);
     }
 
-    private boolean[] checkBets(Bet[] bets, int winIndex, int winner) {
-      int index = 0;
-      boolean[] results = new boolean[bets.length];
-
-      for (Bet bet : bets) {
-        results[index] = bet.check(winIndex, winner);
-        index ++;
-      }
-      return results;
+    private void checkBets(Bet[] bets, Result result, int winIndex, int winner) {
+      Stream.of(bets).forEach(bet -> bet.check(result, winIndex, winner));
     }
   }
 

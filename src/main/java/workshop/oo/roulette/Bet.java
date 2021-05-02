@@ -4,11 +4,7 @@ import java.util.stream.IntStream;
 
 public interface Bet {
 
-  boolean check(int index, int winner);
-
-  double getWinAmount();
-
-  double getLoseAmount();
+  void check(Result result, int index, int winner);
 
   static Bet straight(double amt, int num) {
     return new StraightBet(amt, num);
@@ -77,11 +73,19 @@ public interface Bet {
       assert(n == values.length);
     }
 
+    protected abstract double getWinAmount();
+
+    protected abstract double getLoseAmount();
+
     @Override
-    public final boolean check(int index, int winner) {
+    public final void check(Result result, int index, int winner) {
       boolean[] win = new boolean[1];
       IntStream.range(0, n).forEach(i -> win[0] |= winner == values[i]);
-      return win[0];
+      if (win[0]) {
+        result.onWin(getWinAmount());
+      } else {
+        result.onLose(getLoseAmount());
+      }
     }
   }
 
@@ -314,17 +318,19 @@ public interface Bet {
     }
 
     @Override
-    public boolean check(int index, int winner) {
-      return (index != 0 && index != 19) && index % 2 == 0;
+    public void check(Result result, int index, int winner) {
+      if ((index != 0 && index != 19) && index % 2 == 0) {
+        result.onWin(getWinAmount());
+      } else {
+        result.onLose(getLoseAmount());
+      }
     }
 
-    @Override
-    public double getWinAmount() {
+    private double getWinAmount() {
       return amt;
     }
 
-    @Override
-    public double getLoseAmount() {
+    private double getLoseAmount() {
       return this.amt;
     }
   }
@@ -338,17 +344,19 @@ public interface Bet {
     }
 
     @Override
-    public boolean check(int index, int winner) {
-      return (index != 0 && index != 19) && index % 2 != 0;
+    public void check(Result result, int index, int winner) {
+      if ((index != 0 && index != 19) && index % 2 != 0) {
+        result.onWin(getWinAmount());
+      } else {
+        result.onLose(getLoseAmount());
+      }
     }
 
-    @Override
-    public double getWinAmount() {
+    private double getWinAmount() {
       return amt;
     }
 
-    @Override
-    public double getLoseAmount() {
+    private double getLoseAmount() {
       return this.amt;
     }
   }
@@ -362,17 +370,19 @@ public interface Bet {
     }
 
     @Override
-    public boolean check(int index, int winner) {
-      return winner != 0 && winner % 2 == 0;
+    public void check(Result result, int index, int winner) {
+      if (winner != 0 && winner % 2 == 0) {
+        result.onWin(getWinAmount());
+      } else {
+        result.onLose(getLoseAmount());
+      }
     }
 
-    @Override
-    public double getWinAmount() {
+    private double getWinAmount() {
       return amt;
     }
 
-    @Override
-    public double getLoseAmount() {
+    private double getLoseAmount() {
       return this.amt;
     }
   }
@@ -386,17 +396,19 @@ public interface Bet {
     }
 
     @Override
-    public boolean check(int index, int winner) {
-      return winner != 0 && winner % 2 != 0;
+    public void check(Result result, int index, int winner) {
+      if (winner % 2 != 0) {
+        result.onWin(getWinAmount());
+      } else {
+        result.onLose(getLoseAmount());
+      }
     }
 
-    @Override
-    public double getWinAmount() {
+    private double getWinAmount() {
       return amt;
     }
 
-    @Override
-    public double getLoseAmount() {
+    private double getLoseAmount() {
       return this.amt;
     }
   }

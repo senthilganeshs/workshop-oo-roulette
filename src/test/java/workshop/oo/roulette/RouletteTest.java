@@ -12,8 +12,8 @@ public class RouletteTest {
         Bet.split(1, 7, 24)
     };
 
-    RouletteAsserts.assertWins(roulette, 380, bets, 30);
-    RouletteAsserts.assertAmount(roulette, 380, bets, 320);
+    RouletteAsserts.assertWins(roulette, 380, bets, -700);
+    RouletteAsserts.assertAmount(roulette, 380, bets, -40);
   }
 
 }

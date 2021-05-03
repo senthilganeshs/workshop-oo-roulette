@@ -9,7 +9,7 @@ public class BetTest {
     Roulette roulette = Roulette.american();
     int iter = 380;
 
-    assertWins(roulette, iter, bet, 10);
+    assertWins(roulette, iter, bet, -360);
     assertAmount(roulette, iter, bet, -20);
   }
 
@@ -19,7 +19,7 @@ public class BetTest {
     Roulette roulette = Roulette.american();
     int iter = 380;
 
-    assertWins(roulette, iter, bet, 20);
+    assertWins(roulette, iter, bet, -340);
     assertAmount(roulette, iter, bet, -20);
   }
 
@@ -29,7 +29,7 @@ public class BetTest {
     Roulette roulette = Roulette.american();
     int iter = 380;
 
-    assertWins(roulette, iter, bet, 30);
+    assertWins(roulette, iter, bet, -320);
     assertAmount(roulette, iter, bet, -20);
 
   }
@@ -40,7 +40,7 @@ public class BetTest {
     Roulette roulette = Roulette.american();
     int iter = 380;
 
-    assertWins(roulette, iter, bet, 40);
+    assertWins(roulette, iter, bet, -300);
     assertAmount(roulette, iter, bet, -20);
   }
 
@@ -50,7 +50,7 @@ public class BetTest {
     Roulette roulette = Roulette.american();
     int iter = 380;
 
-    assertWins(roulette, iter, bet, 50);
+    assertWins(roulette, iter, bet, -280);
     assertAmount(roulette, iter, bet, -30);
   }
 
@@ -60,7 +60,7 @@ public class BetTest {
     Roulette roulette = Roulette.american();
     int iter = 380;
 
-    assertWins(roulette, iter, bet, 60);
+    assertWins(roulette, iter, bet, -260);
     assertAmount(roulette, iter, bet, -20);
   }
 
@@ -69,13 +69,13 @@ public class BetTest {
     Roulette roulette = Roulette.american();
     int iter = 380;
 
-    assertWins(roulette, iter, Bet.dozen(1, 1), 120);
+    assertWins(roulette, iter, Bet.dozen(1, 1), -140);
     assertAmount(roulette, iter, Bet.dozen(1, 1), -20);
 
-    assertWins(roulette, iter, Bet.dozen(1, 2), 120);
+    assertWins(roulette, iter, Bet.dozen(1, 2), -140);
     assertAmount(roulette, iter, Bet.dozen(1, 2), -20);
 
-    assertWins(roulette, iter, Bet.dozen(1, 3), 120);
+    assertWins(roulette, iter, Bet.dozen(1, 3), -140);
     assertAmount(roulette, iter, Bet.dozen(1, 3), -20);
   }
 
@@ -84,13 +84,13 @@ public class BetTest {
     Roulette roulette = Roulette.american();
     int iter = 380;
 
-    assertWins(roulette, iter, Bet.column(1, 1), 120);
+    assertWins(roulette, iter, Bet.column(1, 1), -140);
     assertAmount(roulette, iter, Bet.column(1, 1), -20);
 
-    assertWins(roulette, iter, Bet.column(1, 2), 120);
+    assertWins(roulette, iter, Bet.column(1, 2), -140);
     assertAmount(roulette, iter,Bet.column(1, 2), -20);
 
-    assertWins(roulette, iter, Bet.column(1, 3), 120);
+    assertWins(roulette, iter, Bet.column(1, 3), -140);
     assertAmount(roulette, iter, Bet.column(1, 3), -20);
   }
 
@@ -99,10 +99,10 @@ public class BetTest {
     Roulette roulette = Roulette.american();
     int iter = 380;
 
-    assertWins(roulette, iter, Bet.low(1), 180);
+    assertWins(roulette, iter, Bet.low(1), -20);
     assertAmount(roulette, iter, Bet.low(1), -20);
 
-    assertWins(roulette, iter, Bet.high(1), 180);
+    assertWins(roulette, iter, Bet.high(1), -20);
     assertAmount(roulette, iter,Bet.high(1), -20);
   }
 
@@ -111,10 +111,10 @@ public class BetTest {
     Roulette roulette = Roulette.american();
     int iter = 380;
 
-    assertWins(roulette, iter, Bet.even(1), 180);
+    assertWins(roulette, iter, Bet.even(1), -20);
     assertAmount(roulette, iter, Bet.even(1), -20);
 
-    assertWins(roulette, 380, Bet.odd(1), 180);
+    assertWins(roulette, 380, Bet.odd(1), -20);
     assertAmount(roulette, iter, Bet.odd(1), -20);
   }
 
@@ -123,10 +123,10 @@ public class BetTest {
     Roulette roulette = Roulette.american();
     int iter = 380;
 
-    assertWins(roulette, iter, Bet.red(1), 180);
+    assertWins(roulette, iter, Bet.red(1), -20);
     assertAmount(roulette, iter, Bet.red(1), -20);
 
-    assertWins(roulette, iter, Bet.black(1), 180);
+    assertWins(roulette, iter, Bet.black(1), -20);
     assertAmount(roulette, iter, Bet.black(1), -20);
   }
 

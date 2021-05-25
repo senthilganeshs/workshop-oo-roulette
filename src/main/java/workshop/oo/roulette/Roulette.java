@@ -2,12 +2,12 @@ package workshop.oo.roulette;
 
 import java.util.Arrays;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Random;
 import java.util.Set;
-import java.util.stream.Stream;
 
 public interface Roulette {
-  void spin(Bet[] bets, Result result);
+  void spin(List<Bet> bets, Result result);
 
   static Roulette american() {
     return new AmericanRoulette();
@@ -53,7 +53,7 @@ public interface Roulette {
     Set<Integer> usedIndexes = new HashSet<>();
 
     @Override
-    public void spin(Bet[] bets, Result result) {
+    public void spin(List<Bet> bets, Result result) {
       if (usedIndexes.size() == 38) {
         usedIndexes.clear();
       }
@@ -68,8 +68,8 @@ public interface Roulette {
       checkBets(bets, result, index, winner);
     }
 
-    private void checkBets(Bet[] bets, Result result, int winIndex, int winner) {
-      Stream.of(bets).forEach(bet -> bet.check(result, winIndex, winner));
+    private void checkBets(List<Bet> bets, Result result, int winIndex, int winner) {
+      bets.forEach(bet -> bet.check(result, winIndex, winner));
     }
   }
 

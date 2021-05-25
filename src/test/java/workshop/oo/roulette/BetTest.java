@@ -1,5 +1,6 @@
 package workshop.oo.roulette;
 
+import java.util.Arrays;
 import org.junit.Test;
 
 public class BetTest {
@@ -22,7 +23,7 @@ public class BetTest {
     assertWins(roulette, iter, bet, -340);
     assertAmount(roulette, iter, bet, -20);
   }
-
+/*
   @Test
   public void testStreetBetOnRoulette() {
     Bet bet = Bet.street(1, 7, 9, 11);
@@ -129,12 +130,12 @@ public class BetTest {
     assertWins(roulette, iter, Bet.black(1), -20);
     assertAmount(roulette, iter, Bet.black(1), -20);
   }
-
+*/
   private static void assertWins(Roulette roulette, int iter, Bet bet, int expectedWins) {
-    RouletteAsserts.assertWins(roulette, iter, new Bet[]{bet}, expectedWins);
+    RouletteAsserts.assertWins(roulette, iter, Arrays.asList(bet), expectedWins);
   }
 
   private static void assertAmount(Roulette roulette, int iter, Bet bet, double expectedAmt) {
-    RouletteAsserts.assertAmount(roulette, iter, new Bet[] { bet }, expectedAmt);
+    RouletteAsserts.assertAmount(roulette, iter, Arrays.asList(bet), expectedAmt);
   }
 }

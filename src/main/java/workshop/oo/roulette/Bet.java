@@ -14,6 +14,7 @@ public interface Bet {
     return new SplitBet(amt, first, second);
   }
 
+  /*
   static Bet street(double amt, int first, int second, int third) {
     return new StreetBet(amt, first, second, third);
   }
@@ -61,7 +62,7 @@ public interface Bet {
   static Bet black(double amt) {
     return new BlackBet(amt);
   }
-
+*/
   abstract class NBet implements Bet {
 
     private final int[] values;
@@ -129,7 +130,7 @@ public interface Bet {
       return this.amt;
     }
   }
-
+/*
   final class StreetBet extends NBet {
 
     private final double amt;
@@ -411,5 +412,5 @@ public interface Bet {
     private double getLoseAmount() {
       return this.amt;
     }
-  }
+  }*/
 }
